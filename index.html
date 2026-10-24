@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonito Script 🔥</title>
+<style>
+  :root { --orange:#ff6a00; --yellow:#ffe45c; --pink:#ff2e88; --purple:#8c38ff; --cyan:#39f5ff; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; min-height:100%; }
+  body {
+    min-height:100vh; overflow-x:hidden; color:#fff;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:
+      radial-gradient(ellipse at 50% 45%, rgba(255,70,0,.34), transparent 36%),
+      radial-gradient(ellipse at 15% 18%, rgba(255,0,110,.28), transparent 32%),
+      radial-gradient(ellipse at 88% 20%, rgba(123,0,255,.3), transparent 33%),
+      radial-gradient(ellipse at 50% 100%, rgba(255,190,0,.28), transparent 42%),
+      linear-gradient(135deg,#090015 0%,#1a0633 38%,#260016 72%,#080018 100%);
+    display:grid; place-items:center; padding:24px 14px; position:relative;
+  }
+  body::before {
+    content:""; position:fixed; inset:-30%; pointer-events:none; z-index:0;
+    background:conic-gradient(from 0deg,transparent 0 20%,rgba(255,60,0,.08) 25%,transparent 32%,rgba(255,0,120,.07) 44%,transparent 52%,rgba(255,190,0,.08) 66%,transparent 75%,rgba(120,0,255,.08) 88%,transparent);
+    filter:blur(40px); animation:aurora 14s linear infinite;
+  }
+  @keyframes aurora { to { transform:rotate(360deg) scale(1.1); } }
+  .flames { position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:1; }
+  .flame {
+    position:absolute; bottom:-30px; width:clamp(24px,5vw,66px); height:clamp(90px,17vh,190px);
+    border-radius:55% 45% 45% 55% / 70% 70% 30% 30%;
+    background:linear-gradient(to top,#ff1b00 0%,#ff6500 28%,#ffbd00 58%,#fff5a0 76%,rgba(255,255,255,0) 100%);
+    filter:drop-shadow(0 0 12px rgba(255,70,0,.8));
+    transform-origin:bottom center; opacity:.9; animation:lick 1.15s ease-in-out infinite alternate;
+    -webkit-mask-image:linear-gradient(to top,#000 0%,#000 62%,transparent 100%);
+    mask-image:linear-gradient(to top,#000 0%,#000 62%,transparent 100%);
+  }
+  .flame::after { content:""; position:absolute; inset:25% 23% 0; border-radius:50% 50% 45% 45%; background:linear-gradient(to top,#ff3b00, #ffea70 65%,transparent); filter:blur(4px); }
+  .flame:nth-child(3n) { background:linear-gradient(to top,#ff006a,#ff4b00 40%,#ffe86b 70%,transparent); filter:drop-shadow(0 0 15px rgba(255,0,110,.8)); animation-duration:.8s; }
+  .flame:nth-child(4n) { background:linear-gradient(to top,#b000ff,#ff3b7b 40%,#ffcf4a 72%,transparent); filter:drop-shadow(0 0 16px rgba(170,0,255,.75)); animation-duration:1.4s; }
+  .flame:nth-child(5n) { background:linear-gradient(to top,#00d9ff 0%,#3768ff 34%,#d05cff 66%,transparent); filter:drop-shadow(0 0 16px rgba(0,217,255,.8)); }
+  .flame:nth-child(7n) { background:linear-gradient(to top,#ff007f 0%,#ff4d00 36%,#fff36b 70%,transparent); filter:drop-shadow(0 0 18px rgba(255,0,127,.8)); }
+  @keyframes lick { 0% { transform:rotate(-7deg) scaleX(.8) scaleY(.86); } 50% { transform:rotate(5deg) scaleX(1.1) scaleY(1.08); } 100% { transform:rotate(-2deg) scaleX(.9) scaleY(1.18); } }
+  .embers { position:fixed; inset:0; z-index:2; pointer-events:none; }
+  .ember { position:absolute; width:4px;height:4px;border-radius:50%; background:#ffe56b; box-shadow:0 0 10px 3px #ff6500; animation:rise linear infinite; }
+  @keyframes rise { from { transform:translateY(20px) scale(.7); opacity:0; } 15% { opacity:1; } to { transform:translateY(-110vh) scale(1.3); opacity:0; } }
+  main {
+    width:min(100%,520px); position:relative; z-index:3; text-align:center; padding:32px 22px 28px;
+    border:1px solid rgba(255,220,150,.38); border-radius:30px;
+    background:linear-gradient(145deg,rgba(28,8,48,.86),rgba(42,5,21,.84));
+    box-shadow:0 0 22px rgba(255,65,0,.28),0 0 70px rgba(173,0,255,.18),inset 0 0 28px rgba(255,80,0,.09);
+    backdrop-filter:blur(12px);
+  }
+  .logo { font-size:clamp(3rem,14vw,5.5rem); line-height:1; margin:0 0 12px; filter:drop-shadow(0 0 12px #ff4d00); animation:logoGlow 2s ease-in-out infinite alternate; }
+  @keyframes logoGlow { to { filter:drop-shadow(0 0 22px #ffb000) drop-shadow(0 0 34px #ff1685); transform:translateY(-3px); } }
+  h1 { margin:0; font-size:clamp(2.15rem,9vw,3.4rem); letter-spacing:1px; font-weight:950; line-height:1.08;
+    background:linear-gradient(90deg,#fff17a,#ff7b00,#ff278d,#bd72ff,#55f4ff,#fff17a); background-size:260% auto;
+    color:transparent; -webkit-background-clip:text; background-clip:text; animation:rainbow 5s linear infinite; }
+  @keyframes rainbow { to { background-position:260% center; } }
+  .signature { margin:5px auto 18px; text-align:center; font-size:.9rem; font-weight:800; letter-spacing:4px; color:#ffd39b; text-shadow:0 0 10px rgba(255,100,0,.8); }
+  .subtitle { color:#ffe4f5; margin:13px auto 20px; max-width:360px; line-height:1.55; font-size:1rem; }
+  .prompt { padding:12px 14px; margin:0 auto 18px; max-width:390px; border-radius:14px; color:#fff5c9; font-weight:700;
+    background:linear-gradient(90deg,rgba(255,100,0,.17),rgba(255,0,130,.18),rgba(112,0,255,.18));
+    border:1px solid rgba(255,199,98,.3); box-shadow:0 0 20px rgba(255,60,0,.1); }
+  .buttons { display:grid; gap:12px; margin:18px auto 0; max-width:350px; }
+  .btn { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:15px 18px; border:0; border-radius:15px; color:#fff; font-size:1rem; font-weight:850; text-decoration:none; cursor:pointer; transition:transform .18s,filter .18s,box-shadow .18s; }
+  .btn:hover { transform:translateY(-3px) scale(1.015); filter:brightness(1.12); }
+  .like { background:linear-gradient(100deg,#ff4a00,#ff9c00,#ffdc43); color:#260b00; box-shadow:0 5px 24px rgba(255,92,0,.3); }
+  .subscribe { background:linear-gradient(100deg,#ff176c,#e900a9,#8d32ff); box-shadow:0 5px 25px rgba(255,0,140,.28); }
+  .script { background:linear-gradient(100deg,#00bfc9,#4776ff,#9b42ff); box-shadow:0 5px 24px rgba(48,153,255,.3); }
+  .btn:focus-visible { outline:3px solid white; outline-offset:3px; }
+  #scriptArea { display:none; text-align:left; margin:20px auto 0; padding:16px; border-radius:16px; background:#080711; border:1px solid rgba(57,245,255,.45); }
+  #scriptArea.show { display:block; animation:pop .3s ease-out; }
+  @keyframes pop { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  pre { white-space:pre-wrap; overflow-wrap:anywhere; color:#a7ffcb; font-size:.9rem; margin:0 0 12px; }
+  .copy { width:auto; padding:10px 14px; font-size:.9rem; }
+  .note { color:#c9b6d9; font-size:.78rem; line-height:1.5; margin:17px 0 0; }
+  .status { min-height:1.4em; color:#ffe97d; font-size:.9rem; font-weight:700; margin:12px 0 0; }
+  @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+<div class="flames" aria-hidden="true" id="flames"></div>
+<div class="embers" aria-hidden="true" id="embers"></div>
+<main>
+  <div class="logo" aria-hidden="true">🔥</div>
+  <h1>Bonito Script</h1>
+  <p class="signature">Diego</p>
+<div class="prompt">👇 Presiona los dos botones para desbloquear el script 👇</div>
+<div class="buttons">
+    <a class="btn like" id="likeBtn" href="https://www.youtube.com/live/hBPbQ2_A4Zg?si=66fToMbIDrCGLbGK" target="_blank" rel="noopener noreferrer">👍 Dale Like</a>
+    <a class="btn subscribe" id="subBtn" href="https://youtube.com/@drakonite33?si=67oKaVrw6d_UlT9H" target="_blank" rel="noopener noreferrer">🔔 Suscríbete</a>
+    <button class="btn script" id="showBtn" type="button">🔒 BLOQUEADO</button>
+  </div>
+  <p class="status" id="status" aria-live="polite">🔒 Bloqueado. Primero dale Like y suscríbete.</p>
+  <section id="scriptArea" aria-live="polite">
+    <pre id="code">loadstring(game:HttpGet("https://raw.githubusercontent.com/wehibuyfgyuwe/rewrite99ringta.github.io/refs/heads/main/nights.lua"))()</pre>
+    <button class="btn copy" id="copyBtn" type="button">📋 Copiar script</button>
+  </section>
+  
+</main>
+<script>
+  const flames = document.getElementById('flames');
+  for (let i = 0; i < 34; i++) {
+    const f = document.createElement('span');
+    f.className = 'flame';
+    f.style.left = (i / 34 * 100) + '%';
+    f.style.animationDelay = (-Math.random() * 2) + 's';
+    f.style.animationDuration = (0.75 + Math.random() * 1.15) + 's';
+    f.style.height = (85 + Math.random() * 115) + 'px';
+    f.style.opacity = (0.45 + Math.random() * 0.5);
+    flames.appendChild(f);
+  }
+  const embers = document.getElementById('embers');
+  for (let i = 0; i < 38; i++) {
+    const e = document.createElement('span');
+    e.className = 'ember';
+    e.style.left = Math.random() * 100 + '%';
+    e.style.top = (45 + Math.random() * 60) + '%';
+    e.style.animationDelay = (-Math.random() * 9) + 's';
+    e.style.animationDuration = (5 + Math.random() * 8) + 's';
+    e.style.opacity = 0.35 + Math.random() * 0.65;
+    embers.appendChild(e);
+  }
+  let clickedLike = false, clickedSubscribe = false;
+  const status = document.getElementById('status');
+  const showBtn = document.getElementById('showBtn');
+  function updateStatus() {
+    if (clickedLike && clickedSubscribe) {
+      status.textContent = '🔥 ¡Listo! Ya puedes abrir tu script.';
+      showBtn.textContent = '🔓 DESBLOQUEADO — DAR CLIC';
+    } else {
+      showBtn.textContent = '🔒 BLOQUEADO';
+      const missing = [];
+      if (!clickedLike) missing.push('Dale Like');
+      if (!clickedSubscribe) missing.push('Suscríbete');
+      status.textContent = '🔒 Bloqueado. Te falta: ' + missing.join(' y ') + '.';
+    }
+  }
+  document.getElementById('likeBtn').addEventListener('click', () => { clickedLike = true; updateStatus(); });
+  document.getElementById('subBtn').addEventListener('click', () => { clickedSubscribe = true; updateStatus(); });
+  updateStatus();
+  showBtn.addEventListener('click', () => {
+    if (!(clickedLike && clickedSubscribe)) {
+      status.textContent = '🔒 Sigue bloqueado. Haz clic en Dale Like y Suscríbete, y vuelve aquí.';
+      return;
+    }
+    document.getElementById('scriptArea').classList.add('show');
+    status.textContent = '🔓 ¡Desbloqueado! Aquí tienes tu script. 🔥';
+  });
+  // Reinicia el desbloqueo cuando se cierra/sale de esta página.
+  // Al abrir o recargar el archivo, los estados también comienzan en false.
+  window.addEventListener('pagehide', () => {
+    clickedLike = false;
+    clickedSubscribe = false;
+    document.getElementById('scriptArea').classList.remove('show');
+    document.getElementById('copyBtn').textContent = '📋 Copiar script';
+    updateStatus();
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const code = document.getElementById('code').textContent;
+    try {
+      await navigator.clipboard.writeText(code);
+      document.getElementById('copyBtn').textContent = '✅ ¡Copiado!';
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(document.getElementById('code'));
+      const selection = window.getSelection();
+      selection.removeAllRanges(); selection.addRange(range);
+      document.getElementById('copyBtn').textContent = 'Selecciona el texto y cópialo';
+    }
+  });
+</script>
+</body>
+</html>
